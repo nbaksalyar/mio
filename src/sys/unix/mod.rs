@@ -19,6 +19,12 @@ mod kqueue;
           target_os = "netbsd", target_os = "openbsd"))]
 pub use self::kqueue::{Events, Selector};
 
+#[cfg(target_os = "solaris")]
+mod evports;
+
+#[cfg(target_os = "solaris")]
+pub use self::evports::{Events, Selector};
+
 mod awakener;
 mod eventedfd;
 mod io;
